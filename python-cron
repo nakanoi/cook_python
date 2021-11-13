@@ -1,0 +1,1 @@
+00 23 * * 6 root sh /code/get_category/script.sh
