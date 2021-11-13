@@ -1,5 +1,5 @@
 import requests
-from  load_env import APP_ID
+from load_env import APP_ID
 
 
 BASE_URL = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20170426'

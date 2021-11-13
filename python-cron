@@ -1,1 +1,2 @@
 00 23 * * 6 root sh /code/get_category/script.sh
+00 * * * * root sh /code/get_recipe/script.sh

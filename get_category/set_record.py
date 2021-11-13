@@ -1,9 +1,4 @@
-import pymysql
 from datetime import datetime
-from  load_env import (
-    MYSQL_CHARSET, MYSQL_HOST, MYSQL_USER, 
-    MYSQL_PASSWORD, MYSQL_DATABASE,
-)
 
 
 def _create_sql(category_dict, json):
@@ -11,7 +6,7 @@ def _create_sql(category_dict, json):
         category_id, name, url, query, created_at, updated_at\
         ) VALUES'
     _value = " ({}, '{}', '{}', '{}', '{}', '{}'),"
-    now = datetime.now().strftime('%Y-%m-%d')
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     for _, _val in json['result'].items():
         for _v in _val:
@@ -32,22 +27,10 @@ def _create_sql(category_dict, json):
     return sql
 
 
-def recording(category_dict, json):
-    _conn = pymysql.connect(
-        db='mysql',
-        host=MYSQL_HOST,
-        user=MYSQL_USER,
-        passwd=MYSQL_PASSWORD,
-        database=MYSQL_DATABASE,
-        charset=MYSQL_CHARSET,
-    )
-    _cur = _conn.cursor()
-    try:
-        _sql = _create_sql(category_dict, json)
-        _cur.execute(_sql)
-        _cur.connection.commit()
-    finally:
-        _cur.close()
-        _conn.close()
+def recording(cur, category_dict, json):
+    _sql = _create_sql(category_dict, json)
+    print('\nCategory SQL:', _sql)
+    cur.record(_sql)
+    cur.close()
 
     return
