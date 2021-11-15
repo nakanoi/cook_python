@@ -1,2 +1,4 @@
-00 23 * * 6 root sh /code/get_category/script.sh
-00 * * * * root sh /code/get_recipe/script.sh
+LANG=ja_JP.UTF-8
+00 23 * * 6 root python /code/get_category/main.py >> /var/log/get_category.log
+00 * * * * root python /code/get_recipe/main.py >> /var/log/get_recipe.log
+* * * * * root python /code/sample.py >> /var/log/sample.log

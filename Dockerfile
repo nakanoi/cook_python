@@ -16,5 +16,7 @@ COPY ./init.sh /code/init.sh
 COPY ./python-cron /etc/cron.d/python-cron
 RUN chmod 0644 /etc/cron.d/python-cron
 
-RUN chmod +x /code/get_category/script.sh /code/init.sh
-CMD sh /code/init.sh
+RUN chmod +x /code/get_category/script.sh \
+    /code/get_category/script.sh \
+    /code/init.sh
+CMD ["/usr/sbin/cron", "-f"]
