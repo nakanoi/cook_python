@@ -11,6 +11,7 @@ from cur import Cur
 
 
 def main():
+    print('*' * 30)
     print('Getting menu started at {}.'.format(datetime.now()))
 
     _cur = Cur()
@@ -21,6 +22,7 @@ def main():
     _cur.close()
 
     print('Done at {}.'.format(datetime.now()))
+    print('*' * 30)
 
     return
 
