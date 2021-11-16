@@ -11,12 +11,11 @@ COPY requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./get_category/script.sh /code/get_category/script.sh
-COPY ./init.sh /code/init.sh
+COPY ./get_category/main.py /code/get_category/main.py
+COPY ./get_recipe/main.py /code/get_recipe/main.py
 COPY ./python-cron /etc/cron.d/python-cron
 RUN chmod 0644 /etc/cron.d/python-cron
 
-RUN chmod +x /code/get_category/script.sh \
-    /code/get_category/script.sh \
-    /code/init.sh
+RUN chmod +x /code/get_category/main.py \
+    /code/get_category/main.py
 CMD ["/usr/sbin/cron", "-f"]

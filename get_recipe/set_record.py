@@ -60,7 +60,7 @@ def _create_set_sql(recipe_list):
 
 
 def _create_get_category_sql():
-    sql = 'SELECT query FROM categories ORDER BY updated_at DESC;'
+    sql = 'SELECT query FROM categories ORDER BY updated_at;'
 
     return sql
 
@@ -81,12 +81,12 @@ def get_category(cur):
     print('\nCategory SQL:', _sql)
     categories = cur.get_category(_sql)
     _update_sql = _create_date_update_sql(
-        categories[:2]
+        categories[:int(QUERY_NUM)]
     )
     print('\nUpdate SQL:', _update_sql)
     cur.record(_update_sql)
 
-    return categories[int(QUERY_NUM)]
+    return categories[:int(QUERY_NUM)]
 
 
 def recording(cur, recipes):
