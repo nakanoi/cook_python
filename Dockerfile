@@ -16,6 +16,9 @@ COPY ./get_recipe/main.py /code/get_recipe/main.py
 COPY ./python-cron /etc/cron.d/python-cron
 RUN chmod 0644 /etc/cron.d/python-cron
 
+COPY ./.env /code/.env
+RUN ["/bin/bash", "-c", "source /code/.env"]
+
 RUN chmod +x /code/get_category/main.py \
     /code/get_category/main.py
 CMD ["/usr/sbin/cron", "-f"]
