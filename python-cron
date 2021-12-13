@@ -1,0 +1,3 @@
+LANG=ja_JP.UTF-8
+55 23 * * * root /usr/local/bin/python /code/get_category/main.py >> /var/log/get_category.log 2>&1
+*/3 * * * * root /usr/local/bin/python /code/get_recipe/main.py >> /var/log/get_recipe.log 2>&1
